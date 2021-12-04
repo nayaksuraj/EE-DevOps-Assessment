@@ -47,6 +47,9 @@
     {
       "type" : "shell",
       "script" : "./jenkins-setup.sh",
+      "environment_vars": [
+        "TERRAFORM_VER={{user `terraform_version`}}"
+      ],
       "execute_command" : "sudo -E -S sh '{{ .Path }}'"
     }
   ]
