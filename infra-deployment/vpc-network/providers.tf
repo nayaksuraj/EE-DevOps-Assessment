@@ -3,6 +3,7 @@
 ####################################################
 provider "aws" {
   region = var.default_region
+  profile = "default"
 }
 
 
@@ -25,6 +26,10 @@ terraform {
     }
   }
   required_version = ">= 0.13"
+
+  backend "local" {
+    path = "C://projects//EE//EE-DevOps-Assessment//tf-state-file//vpc-network.tfstate"
+  }
 }
 
 # used for accessing Account ID and ARN
