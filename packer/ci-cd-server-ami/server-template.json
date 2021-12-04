@@ -1,0 +1,53 @@
+{
+  "variables": {
+    "ami_name": "ci-cd-node-{{isotime `2006-01-02`}}"
+  },
+  "builders": [
+    {
+      "type" : "amazon-ebs",
+      "profile" : "{{user `aws_profile`}}",
+      "region" : "{{user `default_region`}}",
+      "instance_type" : "t3a.small",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "amzn2-ami-*-ebs",
+          "root-device-type": "ebs"
+        },
+        "owners": ["amazon"],
+        "most_recent": true
+      },
+      "ssh_username" : "ec2-user",
+      "ami_name" : "{{user `ami_name`}}",
+      "ami_description" : "Amazon Linux Image with Jenkins Ansible SSM Git",
+      "run_tags" : {
+        "Name" : "packer-builder",
+        "Project": "DevOps-Assessment"
+      },
+      "tags" : {
+        "CreationDate": "{{isotime `2006-01-02`}}",
+        "Tool" : "Packer",
+        "Developer" : "vivek",
+        "Name": "CI-CD-Server",
+        "Project": "DevOps-Assessment"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type" : "file",
+      "source" : "./plugins.txt",
+      "destination" : "/tmp/plugins.txt"
+    },
+    {
+      "type" : "file",
+      "source" : "./install-plugins.sh",
+      "destination" : "/tmp/install-plugins.sh"
+    },
+    {
+      "type" : "shell",
+      "script" : "./jenkins-setup.sh",
+      "execute_command" : "sudo -E -S sh '{{ .Path }}'"
+    }
+  ]
+}
