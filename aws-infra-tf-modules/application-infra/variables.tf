@@ -8,15 +8,9 @@ variable "default_region" {
   description = "AWS region to deploy resources"
 }
 
-
 variable "instance_type" {
   type = string
   description = "EC2 instance type to create CI/CD instance"
-}
-
-variable "tf_version" {
-  type = string
-  description = "Terraform version to install"
 }
 
 ######################################################
@@ -102,7 +96,7 @@ variable "custom_tags" {
   default = {
     Developer = "Vivek"
     Name = "Application-Node"
-    Project = "DevOps-Assessment"
+    Project = "DevOps-Assessment-App"
   }
 }
 
