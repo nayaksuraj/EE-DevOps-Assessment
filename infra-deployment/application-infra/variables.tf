@@ -14,6 +14,11 @@ variable "instance_type" {
   description = "EC2 instance type to create CI/CD instance"
 }
 
+variable "tf_version" {
+  type = string
+  description = "Terraform version to install"
+}
+
 ######################################################
 # Local variables defined                            #
 ######################################################

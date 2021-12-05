@@ -8,6 +8,8 @@ module "ci_cd_infra" {
   developer    = var.developer
   project_name = var.project_name
 
+  tf_version = var.tf_version
+
   default_region = var.default_region
 
   app_asg_desired_capacity          = var.app_asg_desired_capacity

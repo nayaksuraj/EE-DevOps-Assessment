@@ -2,6 +2,8 @@ default_region = "us-east-1"
 project_name   = "DevOps-Assessment"
 developer      = "Vivek"
 
+tf_version = "1.0.6"
+
 app_asg_desired_capacity          = 1
 app_asg_health_check_grace_period = 300
 app_asg_max_size                  = 3
