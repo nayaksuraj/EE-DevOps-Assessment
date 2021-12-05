@@ -15,7 +15,7 @@ variable "instance_type" {
 }
 
 variable "tf_version" {
-  type = string
+  type        = string
   description = "Terraform version to install"
 }
 
