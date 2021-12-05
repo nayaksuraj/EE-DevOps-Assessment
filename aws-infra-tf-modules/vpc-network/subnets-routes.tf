@@ -2,7 +2,7 @@
 #      NAT gateway requires an Elastic IP            #
 ######################################################
 resource "aws_eip" "nat_gw_eip" {
-  count = var.enable_nat_gateway == "true" ? 2 : 0
+  count = var.enable_nat_gateway == true ? 2 : 0
 
   depends_on = [aws_internet_gateway.vpc_igw]
 
@@ -16,7 +16,7 @@ resource "aws_eip" "nat_gw_eip" {
 #       Create NatGateway and allocate EIP      #
 #################################################
 resource "aws_nat_gateway" "nat_gateway" {
-  count = var.enable_nat_gateway == "true" ? 2 : 0
+  count = var.enable_nat_gateway == true ? 2 : 0
 
   depends_on = [aws_internet_gateway.vpc_igw]
 
@@ -38,11 +38,12 @@ resource "aws_route_table" "private_rt" {
 }
 
 resource "aws_route" "private_nat_gateway" {
+  depends_on = [aws_nat_gateway.nat_gateway]
   count = local.used_azs
 
   route_table_id         = aws_route_table.private_rt.*.id[count.index]
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = aws_nat_gateway.nat_gateway.id
+  nat_gateway_id         = aws_nat_gateway.nat_gateway.*.id[count.index]
 }
 
 resource "aws_route_table_association" "private_rt_association" {

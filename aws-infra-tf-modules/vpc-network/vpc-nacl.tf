@@ -9,7 +9,7 @@ locals {
 
   list_of_azs = data.aws_availability_zones.available.names
   total_azs = length(data.aws_availability_zones.available.names)
-  used_azs = local.total_azs > 3 ? 2 : local.total_azs
+  used_azs = local.total_azs >= 3 ? 2 : local.total_azs
 }
 
 #################################################
