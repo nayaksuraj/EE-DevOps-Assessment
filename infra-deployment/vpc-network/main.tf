@@ -16,5 +16,5 @@ module "vpc" {
   instance_tenancy = var.instance_tenancy
 
   private_subnet_cidrs = var.private_subnet_cidrs
-  public_subnet_cidrs = var.private_subnet_cidrs
+  public_subnet_cidrs = var.public_subnet_cidrs
 }
