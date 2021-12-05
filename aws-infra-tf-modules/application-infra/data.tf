@@ -6,10 +6,8 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-
-
 data "template_file" "script" {
-  template = file("scripts/user-data.tpl")
+  template = file("${path.module}/scripts/user-data.tpl")
 }
 
 data "aws_caller_identity" "current" {}
