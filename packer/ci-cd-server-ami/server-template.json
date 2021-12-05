@@ -7,7 +7,7 @@
       "type" : "amazon-ebs",
       "profile" : "{{user `aws_profile`}}",
       "region" : "{{user `default_region`}}",
-      "instance_type" : "t3a.small",
+      "instance_type" : "t3a.large",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
@@ -34,6 +34,16 @@
     }
   ],
   "provisioners": [
+    {
+      "type" : "file",
+      "source" : "./basic-security.groovy",
+      "destination" : "/tmp/basic-security.groovy"
+    },
+    {
+      "type" : "file",
+      "source" : "./jenkins",
+      "destination" : "/tmp/jenkins"
+    },
     {
       "type" : "file",
       "source" : "./plugins.txt",

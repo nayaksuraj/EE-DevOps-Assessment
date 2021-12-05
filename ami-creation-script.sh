@@ -63,7 +63,7 @@ function create_ci_cd_ami() {
 
       cd packer/ci-cd-server-ami
       packer validate server-template.json
-      packer build -var "aws_profile=default" -var "default_region=$AWS_REGION" -var "terraform_version=1.0.6" server-template.json
+      packer build -var "aws_profile=default" -var "default_region=$AWS_REGION" server-template.json
       cd ../..
     else
       echo "AMI exits with id $CI_CD_AMI_ID"
