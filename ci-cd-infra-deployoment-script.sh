@@ -2,7 +2,7 @@
 
 
 echo ====================================== Info =======================================================
-echo "The below script will first create CI/CD resources"
+echo "The below script will first create application  resources"
 echo -e "===============================================================================================\n\n"
 
 
@@ -19,9 +19,9 @@ done
 
 
 function terraform_deployment() {
-    echo -e "\n\n==================== Creating Application Resources ========================="
+    echo -e "\n\n==================== Creating CI/CD Resources ========================="
 
-    cd infra-deployment/application-infra
+    cd infra-deployment/ci-cd-infra
 
     terraform init -reconfigure
     terraform plan -var-file="dev.tfvars" -var="environment=dev"
@@ -42,8 +42,8 @@ fi
 
 if [ $EXEC_TYPE == 'destroy' ]; then
 
-  echo -e "\n\n ============================ Destroying Application Resources ========================="
-  cd infra-deployment/application-infra
+  echo -e "\n\n ============================ Destroying CI/CD Resources ========================="
+  cd infra-deployment/ci-cd-infra
 
   terraform init -reconfigure
 
