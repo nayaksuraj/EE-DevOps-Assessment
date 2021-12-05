@@ -175,7 +175,7 @@ resource "aws_lb_listener" "ci_cd_alb_listener" {
   }
 }
 
-resource "aws_alb_listener_rule" "ecs_alb_listener_rule" {
+resource "aws_alb_listener_rule" "ci_cd_alb_listener_rule" {
   depends_on = [aws_lb_target_group.ci_cd_target_group]
 
   listener_arn = aws_lb_listener.ci_cd_alb_listener.arn

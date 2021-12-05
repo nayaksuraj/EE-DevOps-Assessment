@@ -75,7 +75,7 @@ resource "aws_iam_role_policy_attachment" "policy_role_attach" {
   role       = aws_iam_role.ci_cd_node_access_role.name
 }
 
-resource "aws_iam_role_policy_attachment" "aws_eks_cluster_policy" {
+resource "aws_iam_role_policy_attachment" "ci_cd_ssm_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
   role       = aws_iam_role.ci_cd_node_access_role.name
 }
