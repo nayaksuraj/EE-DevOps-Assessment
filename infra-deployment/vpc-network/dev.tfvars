@@ -1,11 +1,13 @@
 default_region = "us-east-1"
 
-cidr_block         = "10.0.0.0/20"      # 4096 IPs, 10.0.0.0 - 10.0.15.255
+enable_nat_gateway = true
+
+cidr_block         = "10.5.0.0/24"                              # 256 IPs, 10.5.0.0 - 10.5.0.254
 instance_tenancy   = "default"
 enable_dns         = "true"
 support_dns        = "true"
 
-private_subnet_cidrs = ["10.0.0.0/24","10.0.2.0/24","10.0.4.0/24"]
-public_subnet_cidrs = ["10.0.1.0/24","10.0.3.0/24","10.0.5.0/24"]
+private_subnet_cidrs = ["10.5.0.0/26","10.5.0.64/26"]           # 62 IPs in each subnet
+public_subnet_cidrs = ["10.5.0.128/26","10.5.0.192/26"]
 
 developer                 = "Vivek"

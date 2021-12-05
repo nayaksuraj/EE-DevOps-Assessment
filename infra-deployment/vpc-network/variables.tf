@@ -6,6 +6,11 @@ variable "default_region" {
 #################################################
 #       Variables for VPC Networking            #
 #################################################
+variable "enable_nat_gateway" {
+  type = bool
+  description = "NAT gateway flag"
+}
+
 variable "cidr_block" {
   type        = string
   description = "CIDR range for vpc"

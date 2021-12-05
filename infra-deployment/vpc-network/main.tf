@@ -8,6 +8,7 @@ module "vpc" {
   developer = var.developer
 
   default_region = var.default_region
+  enable_nat_gateway = var.enable_nat_gateway
 
   cidr_block            = var.cidr_block
   enable_dns            = var.enable_dns

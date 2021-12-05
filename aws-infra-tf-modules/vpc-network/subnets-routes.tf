@@ -2,6 +2,8 @@
 #      NAT gateway requires an Elastic IP            #
 ######################################################
 resource "aws_eip" "nat_gw_eip" {
+  count = var.enable_nat_gateway == "true" ? 2 : 0
+
   depends_on = [aws_internet_gateway.vpc_igw]
 
   vpc = true
@@ -14,9 +16,11 @@ resource "aws_eip" "nat_gw_eip" {
 #       Create NatGateway and allocate EIP      #
 #################################################
 resource "aws_nat_gateway" "nat_gateway" {
+  count = var.enable_nat_gateway == "true" ? 2 : 0
+
   depends_on = [aws_internet_gateway.vpc_igw]
 
-  allocation_id = aws_eip.nat_gw_eip.id
+  allocation_id = aws_eip.nat_gw_eip.*.id[count.index]
   subnet_id     = aws_subnet.public_subnet.*.id[count.index]
 
   tags = merge(local.common_tags, tomap({"Name"= "nat_gw-${var.environment}-${aws_vpc.devOps_assessment.id}-${count.index}"}))
