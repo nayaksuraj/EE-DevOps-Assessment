@@ -2,7 +2,7 @@
 #           CI/CD Node Module Deployment           #
 ####################################################
 module "ci_cd_infra" {
-  source = "../../aws-infra-tf-modules/application-infra"
+  source = "../../aws-infra-tf-modules/ci-cd-infra"
 
   environment  = var.environment
   developer    = var.developer
