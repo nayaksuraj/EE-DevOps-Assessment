@@ -1,21 +1,21 @@
 variable "project_name" {
-  type = string
+  type        = string
   description = "DevOps Assessment"
 }
 
 variable "default_region" {
-  type = string
+  type        = string
   description = "AWS region to deploy resources"
 }
 
 
 variable "instance_type" {
-  type = string
+  type        = string
   description = "EC2 instance type to create CI/CD instance"
 }
 
 variable "tf_version" {
-  type = string
+  type        = string
   description = "Terraform version to install"
 }
 
@@ -33,7 +33,7 @@ variable "environment" {
 }
 
 variable "volume_type" {
-  type = string
+  type        = string
   description = "EBS volume type"
 }
 
@@ -98,32 +98,32 @@ variable "wait_for_capacity_timeout" {
 #####=============ASG Standards Tags===============#####
 variable "custom_tags" {
   description = "Custom tags to set on the Instances in the ASG"
-  type = map(string)
+  type        = map(string)
   default = {
     Developer = "Vivek"
-    Name = "CI-CD-Node"
-    Project = "DevOps-Assessment"
+    Name      = "CI-CD-Node"
+    Project   = "DevOps-Assessment"
   }
 }
 
 #####================================ELB Configuration Variables=============================#####
 variable "lb_type" {
-  type = string
+  type        = string
   description = "AWS Loadbalancer type to deploy"
 }
 
 variable "lb_isInternal" {
-  type = bool
+  type        = bool
   description = "Flag for ELB Internal / Public"
 }
 
 variable "listener_port" {
-  type = string
+  type        = string
   description = "ELB listener PORT, 80, 443"
 }
 
 variable "listener_protocol" {
-  type = string
+  type        = string
   description = "ELB listener protocol HTTP, HTTPS"
 }
 

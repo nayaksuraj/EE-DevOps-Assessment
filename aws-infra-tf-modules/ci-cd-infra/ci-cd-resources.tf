@@ -95,8 +95,8 @@ resource "aws_autoscaling_group" "ci_cd_node_asg" {
   suspended_processes = var.suspended_processes
 
   launch_template {
-    id = aws_launch_template.ci_cd_node_lt.id
-    version            = aws_launch_template.ci_cd_node_lt.latest_version
+    id      = aws_launch_template.ci_cd_node_lt.id
+    version = aws_launch_template.ci_cd_node_lt.latest_version
   }
 
   lifecycle {

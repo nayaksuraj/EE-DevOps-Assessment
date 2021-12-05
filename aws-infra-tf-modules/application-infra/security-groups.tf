@@ -1,5 +1,5 @@
 resource "aws_security_group" "app_node_sg" {
-  name        = "${var.project_name}-sg"
+  name = "${var.project_name}-sg"
 
   description = "Allow traffic from port 80 and enable SSH"
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
@@ -17,11 +17,11 @@ resource "aws_security_group_rule" "allow_traffic_from_lb" {
 }
 
 resource "aws_security_group_rule" "allow_ssh_traffic" {
-  type                     = "ingress"
-  from_port                = 22
-  to_port                  = 22
-  protocol                 = "tcp"
-  security_group_id        = aws_security_group.app_node_sg.id
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  security_group_id = aws_security_group.app_node_sg.id
   cidr_blocks       = ["10.0.0.0/24"]
 }
 

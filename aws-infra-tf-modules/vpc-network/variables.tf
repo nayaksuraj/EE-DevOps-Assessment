@@ -1,5 +1,5 @@
 variable "default_region" {
-  type = string
+  type        = string
   description = "AWS region to deploy resources"
 }
 
@@ -7,7 +7,7 @@ variable "default_region" {
 #       Variables for VPC Networking            #
 #################################################
 variable "enable_nat_gateway" {
-  type = bool
+  type        = bool
   description = "NAT gateway flag"
 }
 

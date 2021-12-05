@@ -8,8 +8,8 @@ locals {
   }
 
   list_of_azs = data.aws_availability_zones.available.names
-  total_azs = length(data.aws_availability_zones.available.names)
-  used_azs = local.total_azs >= 3 ? 2 : local.total_azs
+  total_azs   = length(data.aws_availability_zones.available.names)
+  used_azs    = local.total_azs >= 3 ? 2 : local.total_azs
 }
 
 #################################################
@@ -17,12 +17,12 @@ locals {
 #################################################
 resource "aws_vpc" "devOps_assessment" {
 
-  cidr_block = var.cidr_block
+  cidr_block           = var.cidr_block
   enable_dns_hostnames = var.enable_dns
-  enable_dns_support = var.support_dns
-  instance_tenancy = var.instance_tenancy
+  enable_dns_support   = var.support_dns
+  instance_tenancy     = var.instance_tenancy
 
-  tags = merge(local.common_tags, tomap({"Name"= "vpc-${var.environment}-${var.cidr_block}"}))
+  tags = merge(local.common_tags, tomap({ "Name" = "vpc-${var.environment}-${var.cidr_block}" }))
 }
 
 #######################################################
@@ -31,7 +31,7 @@ resource "aws_vpc" "devOps_assessment" {
 resource "aws_internet_gateway" "vpc_igw" {
   vpc_id = aws_vpc.devOps_assessment.id
 
-  tags = merge(local.common_tags, tomap({"Name"= "igw-${var.environment}"}))
+  tags = merge(local.common_tags, tomap({ "Name" = "igw-${var.environment}" }))
 }
 
 #######################################################
@@ -39,7 +39,7 @@ resource "aws_internet_gateway" "vpc_igw" {
 #######################################################
 resource "aws_route_table" "vpc_main_rt" {
   vpc_id = aws_vpc.devOps_assessment.id
-  tags   = merge(local.common_tags, tomap({"Name"= "vpc-${var.environment}-main-rt"}))
+  tags   = merge(local.common_tags, tomap({ "Name" = "vpc-${var.environment}-main-rt" }))
 }
 
 resource "aws_main_route_table_association" "main_rt_vpc_association" {
@@ -144,7 +144,7 @@ resource "aws_network_acl" "public_subnet_nacl" {
     to_port    = 65535
   }
 
-  tags = merge(local.common_tags, tomap({"Name"= "pub_nacl-${var.environment}"}))
+  tags = merge(local.common_tags, tomap({ "Name" = "pub_nacl-${var.environment}" }))
 }
 
 
@@ -246,5 +246,5 @@ resource "aws_network_acl" "private_subnet_nacl" {
     to_port    = 65535
   }
 
-  tags = merge(local.common_tags, tomap({"Name"= "Private-${var.environment}-NACL"}))
+  tags = merge(local.common_tags, tomap({ "Name" = "Private-${var.environment}-NACL" }))
 }
