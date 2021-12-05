@@ -40,7 +40,7 @@ resource "aws_launch_template" "ci_cd_node_lt" {
 
   network_interfaces {
     device_index                = 0
-    associate_public_ip_address = false
+    associate_public_ip_address = true
     security_groups             = [aws_security_group.ci_cd_node_sg.id]
     delete_on_termination       = true
   }
@@ -77,7 +77,7 @@ resource "aws_autoscaling_group" "ci_cd_node_asg" {
 
   name_prefix = "${var.project_name}-asg-${var.environment}"
 
-  vpc_zone_identifier = data.terraform_remote_state.vpc.outputs.private_subnets
+  vpc_zone_identifier = data.terraform_remote_state.vpc.outputs.public_subnets
 
   capacity_rebalance = true
 
@@ -188,7 +188,7 @@ resource "aws_alb_listener_rule" "ecs_alb_listener_rule" {
 
   condition {
     path_pattern {
-      values = ["/"]
+      values = ["*"]
     }
   }
 }
