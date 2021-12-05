@@ -24,6 +24,6 @@ sudo chkconfig docker on
 docker --version
 
 
-sudo yum install nginx -y
+sudo amazon-linux-extras install nginx1 -y
 sudo service nginx start
 sudo chkconfig nginx on

@@ -1,6 +1,7 @@
 resource "aws_security_group" "app_node_sg" {
   name        = "${var.project_name}-sg"
-  description = "Allow traffic from port 8009 and enable SSH"
+
+  description = "Allow traffic from port 80 and enable SSH"
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
 
   tags = merge(local.common_tags, map("Name", "${var.project_name}-sg"))
@@ -8,11 +9,11 @@ resource "aws_security_group" "app_node_sg" {
 
 resource "aws_security_group_rule" "allow_traffic_from_lb" {
   type                     = "ingress"
-  from_port                = 8009
-  to_port                  = 8009
+  from_port                = 80
+  to_port                  = 80
   protocol                 = "tcp"
   security_group_id        = aws_security_group.app_node_sg.id
-  source_security_group_id = aws_security_group.lb_sg.id
+  source_security_group_id = aws_security_group.app_lb_sg.id
 }
 
 resource "aws_security_group_rule" "allow_ssh_traffic" {
