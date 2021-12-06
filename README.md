@@ -36,7 +36,7 @@
 
 ![Solution Architecture][solution-screenshot]
 
-This VPC Module will provision components as follows:
+The VPC Module will provision components as follows:
 * VPC
 * Subnets (Private, Public)
 * InternetGateway
@@ -45,7 +45,7 @@ This VPC Module will provision components as follows:
 * EIPs
 
 
-This CI-CD Module will provision components as follows:
+The CI-CD Module will provision components as follows:
 * Autoscaling-Group & Launch Template (Using AMI with Jenkins Installed)
 * IAM Instance profile & SSH key for node access
 * Application Load Balancer, Target Group & Listener Rule
@@ -53,7 +53,7 @@ This CI-CD Module will provision components as follows:
 * EC2 userdata script installs AWSCLI, SSM Agent, Docker & Ansible
 
 
-This Application Module will provision components as follows:
+The Application Module will provision components as follows:
 * Autoscaling-Group & Launch Template
 * IAM Instance profile & SSH key for node access
 * Application Load Balancer, Target Group & Listener Rule
