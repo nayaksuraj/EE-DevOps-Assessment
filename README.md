@@ -89,7 +89,7 @@ To run the terraform deployment from local we should have below installation in 
 
 ### Setup Configuration
 
-* Configure IAM credentials to access AWS environment, configure default aws profile in your local machine.
+* Configure IAM credentials to access AWS environment, all the script uses aws default profile from local.
 * Create AMI for Jenkins server using packer. This will configure Jenkins with Admin user & password.
     - [Jenkins-AMI](ami-creation-script.sh)
   ```
