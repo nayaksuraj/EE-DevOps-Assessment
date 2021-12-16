@@ -12,7 +12,7 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins-ci.org/redhat/jen
 sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 
 yum --showduplicates list jenkins | expand
-sudo yum install -y jenkins-2.289.1
+sudo yum install -y jenkins-2.255-1.1
 chkconfig jenkins on
 
 
