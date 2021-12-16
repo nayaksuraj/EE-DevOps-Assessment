@@ -15,7 +15,7 @@ output "ci_cd_node_ssh_key" {
 }
 
 output "ci_cd_node_content" {
-  value = tls_private_key.ci_cd_ssh_data.public_key_openssh
+  value = tls_private_key.ci_cd_ssh_data.public_key_pem
 }
 
 output "ci_cd_iam_profile" {
