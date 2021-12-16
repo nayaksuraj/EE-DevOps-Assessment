@@ -18,7 +18,7 @@ lb_isInternal     = false
 listener_port     = "80"
 listener_protocol = "HTTP"
 
-volume_size = "10"
+volume_size = "30"
 volume_type = "gp2"
 
 default_target_group_port = 80
