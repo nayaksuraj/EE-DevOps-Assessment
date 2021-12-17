@@ -28,7 +28,7 @@ terraform {
   required_version = ">= 0.13"
 
   backend "local" {
-    path = "C://projects//EE//EE-DevOps-Assessment//tf-state-file//vpc-network.tfstate"
+    path = "C://projects//EE//EE-DevOps-Assessment//tf-state-file//vpc-infra-network.tfstate"
   }
 }
 
