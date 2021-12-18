@@ -36,7 +36,12 @@ class NginxAppBuilder {
                 }
             }
             parameters {
-
+                stringParam('ENVIRONMENT', environment)
+                stringParam('EMAIL_TO', emailId)
+                labelParam('Node') {
+                    description('Select the node to execute the job')
+                    defaultValue(environment)
+                }
             }
         }
     }
